@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ธนพร พันธ์เพียร</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- General settings --- */
+        :root {
+            --primary-color: #004d99; /* Deep Blue */
+            --secondary-color: #007bff; /* Bright Blue */
+            --light-bg: #f5f8fa; /* Light Gray Background */
+            --card-bg: #ffffff; /* White Card Background */
+            --text-color: #333333; /* Dark Gray Text */
+            --light-text-color: #f0f0f0; /* Light Gray Text */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        /* --- Main container --- */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 40px);
+        }
+        /* --- Header Section --- */
+        header.hero {
+            position: relative;
+            height: 300px;
+            background-image: url('Header.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        /* --- Main Content Layout --- */
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+        /* --- Navigation Menu --- */
+        nav {
+            width: 300px;
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+        nav a:hover::before {
+            left: 0;
+        }
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left: 5px solid var(--secondary-color);
+        }
+        /* --- Main Article Section --- */
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: var(--card-bg);
+            border-radius: 0 16px 16px 0;
+        }
+        main h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+        main h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        main p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        /* --- Contact Links --- */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            width: calc(33% - 20px);
+            min-width: 250px;
+        }
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .contact-details .name {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .contact-details .info {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #555;
+        }
+        /* --- Comment Form --- */
+        .comment-form {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .comment-form label {
+            display: block;
+            font-weight: 600;
+            margin-top: 20px;
+            color: var(--primary-color);
+        }
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        .comment-form input[type="text"]:focus,
+        .comment-form textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+        .comment-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .comment-form button {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .comment-form button:hover {
+            background-color: var(--secondary-color);
+        }
+        /* --- Comment Display Area --- */
+        .comment-display {
+            margin-top: 40px;
+        }
+        .comment-item {
+            background-color: var(--card-bg);
+            border: 1px solid #e0e6f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .comment-item strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .comment-item p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        /* --- Footer Section --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+        }
+        footer h3 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        /* --- Responsive Design (Mobile) --- */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                padding: 15px 0;
+            }
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav li {
+                flex: 1 1 auto;
+                text-align: center;
+                margin: 0 5px;
+            }
+            nav a {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            nav a:hover, nav a.active {
+                transform: none;
+                border-bottom: 3px solid var(--secondary-color);
+                border-left: none;
+            }
+            main {
+                padding: 30px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            .contact-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        <header class="hero">
+            <div class="header-content">
+                <h1>ติดต่อฉัน</h1>
+                <p>กรุณาแสดงความคิดเห็นเพื่อการพัฒนา</p>
+            </div>
+        </header>
+        <div class="main-content">
+            <nav>
+                <ul>
+                    <li><a href="Home page.html">หน้าหลัก</a></li>
+                    <li><a href="p1.html">ข้อมูลส่วนตัว</a></li>
+                    <li><a href="p2.html">ประวัติการศึกษา</a></li>
+                    <li><a href="p3.html">โครงงาน</a></li>
+                    <li><a href="p4.html">ประสบการณ์การทำงาน</a></li>
+                    <li><a href="p5.html">กิจกรรม</a></li>
+                    <li><a href="p6.html">เกียรติบัตร</a></li>
+                    <li><a href="p7.html" class="active">ติดต่อ</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h2>ขอบคุณที่เยี่ยมชมเว็บไซต์</h2>
+                <p>หลังจากได้อ่านเนื้อหาในแฟ้มสะสมผลงานแล้ว ขอขอบคุณทุกท่านที่สละเวลาเข้าเยี่ยมชมและให้ความสนใจ หากมีข้อคิดเห็นหรือข้อเสนอแนะใดๆ เพื่อใช้ในการปรับปรุงและพัฒนาเว็บไซต์ให้ดียิ่งขึ้น สามารถกรอกข้อมูลหรือติดต่อเพื่อเติมตามด้านล่างนี้ได้เลยค่ะ</p>
+                <h3>ช่องทางการติดต่ออื่นๆ</h3>
+                <div class="contact-links">
+                    <a href="https://www.facebook.com/cor.lor.2024" target="_blank" class="contact-item">
+                        <i class="fab fa-facebook-f"></i>
+                        <div class="contact-details">
+                            <span class="name">Cor Lor</span>
+                            <span class="info">Facebook Profile</span>
+                        </div>
+                    </a>
+                    <a href="mailto:tanapornphanphaen@gmail.com" class="contact-item">
+                        <i class="far fa-envelope"></i>
+                        <div class="contact-details">
+                            <span class="name">Tanaporn Panphaen</span>
+                            <span class="info">tanapornphanphaen@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="tel:+66984462820" class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-details">
+                            <span class="name">เบอร์โทรศัพท์</span>
+                            <span class="info">098-446-2820</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="comment-form">
+                    <label for="name">ชื่อของคุณ:</label>
+                    <input type="text" id="name" placeholder="กรอกชื่อของคุณ">
+                    <label for="comment">ความคิดเห็น:</label>
+                    <textarea id="comment" placeholder="กรอกความคิดเห็นของคุณ..."></textarea>
+                    <button onclick="addComment()">ส่งความคิดเห็น</button>
+                </div>
+                <div class="comment-display" id="commentDisplay">
+                    <h3>ความคิดเห็นจากผู้เยี่ยมชม</h3>
+                </div>
+            </main>
+        </div>
+        <footer>
+            <h3>จัดทำโดย: นางสาวธนพร พันธ์เพียร</h3>
+        </footer>
+    </div>
+    <script>
+        window.onload = function() {
+            let savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+            let display = document.getElementById('commentDisplay');
+            if (savedComments.length === 0) {
+                display.style.display = 'none';
+            } else {
+                savedComments.forEach(c => {
+                    let commentItem = document.createElement('div');
+                    commentItem.classList.add('comment-item');
+                    commentItem.innerHTML = `<strong>${c.name}</strong><p>${c.text}</p>`;
+                    display.appendChild(commentItem);
+                });
+            }
+        };
+        function addComment() {
+            let name = document.getElementById('name').value.trim();
+            let comment = document.getElementById('comment').value.trim();
+            let display = document.getElementById('commentDisplay');
+            if (name === "" || comment === "") {
+                alert("กรุณากรอกชื่อและความคิดเห็นให้ครบถ้วน");
+                return;
+            }
+            let savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+            savedComments.push({ name: name, text: comment });
+            localStorage.setItem('comments', JSON.stringify(savedComments));
+            let commentItem = document.createElement('div');
+            commentItem.classList.add('comment-item');
+            commentItem.innerHTML = `<strong>${name}</strong><p>${comment}</p>`;
+            display.appendChild(commentItem);
+            display.style.display = 'block';
+            document.getElementById('name').value = "";
+            document.getElementById('comment').value = "";
+        }
+    </script>
+</body>
+</html>

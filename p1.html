@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information - ธนพร พันธ์เพียร</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- General settings --- */
+        :root {
+            --primary-color: #004d99; /* Deep Blue */
+            --secondary-color: #007bff; /* Bright Blue */
+            --light-bg: #f5f8fa; /* Light Gray Background */
+            --card-bg: #ffffff; /* White Card Background */
+            --text-color: #333333; /* Dark Gray Text */
+            --light-text-color: #f0f0f0; /* Light Gray Text */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Main container --- */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 40px);
+        }
+
+        /* --- Header Section --- */
+        header.hero {
+            position: relative;
+            height: 300px;
+            background-image: url('Header.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* --- Main Content Layout --- */
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        /* --- Navigation Menu --- */
+        nav {
+            width: 300px;
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        /* --- Main Article Section --- */
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: var(--card-bg);
+            border-radius: 0 16px 16px 0;
+        }
+
+        main h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+        
+        main h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* --- About Me Section --- */
+        .about-me {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-me-info p {
+            margin: 12px 0;
+            font-size: 1.1em;
+        }
+        
+        .about-me-info p strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* --- Lists Styles --- */
+        main ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        main ul li {
+            background-color: #eef5fb;
+            margin-bottom: 15px;
+            padding: 15px 25px;
+            border-left: 6px solid var(--secondary-color);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1.05em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        main ul li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Footer Section --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        footer h3 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* --- Responsive Design (Mobile) --- */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav li {
+                flex: 1 1 auto;
+                text-align: center;
+                margin: 0 5px;
+            }
+
+            nav a {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            nav a:hover, nav a.active {
+                transform: none;
+                border-bottom: 3px solid var(--secondary-color);
+                border-left: none;
+            }
+
+            main {
+                padding: 30px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .about-me {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-pic {
+                width: 200px; / Increased from 120px for mobile /
+                height: 200px; / Increased from 120px for mobile /
+            }
+            
+            main ul li {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="portfolio-container">
+    
+    <header class="hero">
+        <div class="header-content">
+            <h1>ข้อมูลส่วนตัว</h1>
+            <p>รู้จักฉันให้มากขึ้น</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <nav>
+            <ul>
+                <li><a href="Home page.html">หน้าหลัก</a></li>
+                <li><a href="p1.html" class="active">ข้อมูลส่วนตัว</a></li>
+                <li><a href="p2.html">ประวัติการศึกษา</a></li>
+                <li><a href="p3.html">โครงงาน</a></li>
+                <li><a href="p4.html">ประสบการณ์การทำงาน</a></li>
+                <li><a href="p5.html">กิจกรรม</a></li>
+                <li><a href="p6.html">เกียรติบัตร</a></li>
+                <li><a href="p7.html">ติดต่อ</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>ข้อมูลส่วนตัว</h2>
+            <div class="about-me">
+                <img src="Me.png" alt="My Profile Photo" class="profile-pic">
+                <div class="about-me-info">
+                    <p><strong>ชื่อ-นามสกุล:</strong> นางสาวธนพร พันธ์เพียร </p>
+                    <p><strong>ชื่อเล่น:</strong> ครีม </p>
+                    <p><strong>วันเดือนปีเกิด:</strong> 18 มิถุนายน 2550 </p>
+                </div>
+            </div>
+            
+            <h3>ความสามารถพิเศษ</h3>
+            <ul>
+                <li>ทักษะการวาดรูปและออกแบบ</li>
+                <li>สามารถเขียน HTML เพื่อจัดทำสื่อต่างๆ ได้</li>
+                <li>ทักษะการต่อวงจรไฟฟ้า</li>
+                <li>ความสามารถในการประกอบหุ่นยนต์ขนาดเล็ก</li>
+				<li>การร้องเพลงพื้นบ้าน</li>
+            </ul>
+
+            <h3>ประสบการณ์การทำงาน</h3>
+            <ul>
+                <li>ดำรงตำแหน่ง หัวหน้าห้อง ในปี พ.ศ.2566 </li>
+                <li>ดำรงตำแหน่ง ประธานชุมนุม ในปี พ.ศ.2566 </li>
+                <li>ดำรงตำแหน่ง ประธานพาเหรด ในปี พ.ศ.2566 </li>
+                <li>ดำรงตำแหน่ง รองหัวหน้าห้อง ในปี พ.ศ.2567 </li>
+                <li>ดำรงตำแหน่ง ผู้นำเชียร์ ในปี พ.ศ.2567 </li>
+                <li>ดำรงตำแหน่ง หัวหน้าสารวัตรห้อง ในปี พ.ศ.2568 </li>
+                <li>ดำรงตำแหน่ง คณะสภาเด็กราชบุรี ในปี พ.ศ.2568 </li>
+                <li>ดำรงตำแหน่ง หัวหน้าวิทยากร ในปี พ.ศ.2568 </li>
+            </ul>
+        </main>
+    </div>
+
+    <footer>
+        <h3>จัดทำโดย: นางสาวธนพร พันธ์เพียร</h3>
+    </footer>
+</div>
+</body>
+</html>

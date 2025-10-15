@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - ธนพร พันธ์เพียร</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- General settings --- */
+        :root {
+            --primary-color: #004d99; /* Deep Blue */
+            --secondary-color: #007bff; /* Bright Blue */
+            --light-bg: #f5f8fa; /* Light Gray Background */
+            --card-bg: #ffffff; /* White Card Background */
+            --text-color: #333333; /* Dark Gray Text */
+            --light-text-color: #f0f0f0; /* Light Gray Text */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Main container --- */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 40px);
+        }
+
+        /* --- Header Section --- */
+        header.hero {
+            position: relative;
+            height: 300px;
+            background-image: url('Header.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* --- Main Content Layout --- */
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        /* --- Navigation Menu --- */
+        nav {
+            width: 300px;
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        /* --- Main Article Section --- */
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: var(--card-bg);
+            border-radius: 0 16px 16px 0;
+        }
+
+        main h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+        
+        main h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        main p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* --- Project Gallery (Example) --- */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-item {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .project-item .content {
+            padding: 20px;
+        }
+
+        .project-item h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .project-item p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        /* --- Footer Section --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        footer h3 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* --- Responsive Design (Mobile) --- */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav li {
+                flex: 1 1 auto;
+                text-align: center;
+                margin: 0 5px;
+            }
+
+            nav a {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            nav a:hover, nav a.active {
+                transform: none;
+                border-bottom: 3px solid var(--secondary-color);
+                border-left: none;
+            }
+
+            main {
+                padding: 30px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="portfolio-container">
+    
+    <header class="hero">
+        <div class="header-content">
+            <h1>โครงงานและผลงาน</h1>
+            <p>ผลงานสร้างสรรค์ที่ฉันภูมิใจ</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <nav>
+            <ul>
+                <li><a href="Home page.html">หน้าหลัก</a></li>
+                <li><a href="p1.html">ข้อมูลส่วนตัว</a></li>
+                <li><a href="p2.html">ประวัติการศึกษา</a></li>
+                <li><a href="p3.html"class="active">โครงงาน</a></li>
+                <li><a href="p4.html">ประสบการณ์การทำงาน</a></li>
+                <li><a href="p5.html">กิจกรรม</a></li>
+                <li><a href="p6.html">เกียรติบัตร</a></li>
+                <li><a href="p7.html">ติดต่อ</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>โครงงานที่น่าสนใจ</h2>
+            <p>
+                ในระหว่างการศึกษา ฉันได้มีโอกาสทำโครงงานหลายอย่างที่ช่วยพัฒนาทักษะด้านเทคโนโลยีและการออกแบบของฉัน โครงงานเหล่านี้ทำให้ฉันได้นำความรู้ที่เรียนมาใช้จริงและฝึกฝนการทำงานเป็นทีม
+            </p>
+            <div class="project-gallery">
+                <div class="project-item">
+                    <img src="80.png" alt="ภาพโครงการ 1">
+                    <div class="content">
+                        <h4>โครงการคณิตศาสตร์ การเปรียบเทียบสมการไดโอเฟนไทน์กับการประยุกต์ใช้ด้วยเอไอ</h4>
+                        <p>โครงงานนี้มุ่งเน้นการเปรียบเทียบการใช้เอไอในการคำนวณคำตอบว่าแม่นยำเท่ากับมนุษย์หรือไม่</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="81.png" alt="ภาพโครงการ 2">
+                    <div class="content">
+                        <h4>โครงงานหุ่นยนต์อัตโนมัติ</h4>
+                        <p>พัฒนาหุ่นยนต์ขนาดกลางเพื่อช่วยในการตัดหญ้าและปล่อยปุ๋ยในเวลาเดียวกัน</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="82.png" alt="ภาพโครงการ 3">
+                    <div class="content">
+                        <h4>โครงงานแอปพลิเคชันสำหรับผู้ใช้ยา</h4>
+                        <p>ออกแบบและพัฒนาแอปพลิเคชันต้นแบบสำหรับผู้ใช้ยาเพื่อใช้ในการตรวจสอบและเตือนเวลาทานยา</p>
+                    </div>
+                </div>
+				<div class="project-item">
+                    <img src="83.png" alt="ภาพโครงการ 4">
+                    <div class="content">
+                        <h4>โครงงานแอปพลิเคชันสำหรับการเรียนรู้</h4>
+                        <p>ออกแบบและพัฒนาแอปพลิเคชันต้นแบบสำหรับการเรียนรู้ออนไลน์</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <h3>จัดทำโดย: นางสาวธนพร พันธ์เพียร</h3>
+    </footer>
+</div>
+</body>
+</html>

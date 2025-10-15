@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - ธนพร พันธ์เพียร</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS styles from previous responses */
+        :root {
+            --primary-color: #004d99;
+            --secondary-color: #007bff;
+            --light-bg: #f5f8fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --light-text-color: #f0f0f0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 40px);
+        }
+        header.hero {
+            position: relative;
+            height: 300px;
+            background-image: url('Header.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+        nav {
+            width: 300px;
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+        nav a:hover::before {
+            left: 0;
+        }
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left: 5px solid var(--secondary-color);
+        }
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: var(--card-bg);
+            border-radius: 0 16px 16px 0;
+        }
+        main h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+        .quote-box {
+            font-style: italic;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 20px;
+            margin: 30px 0;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        main p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        main a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid var(--primary-color);
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        main a:hover {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+        }
+        footer h3 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                padding: 15px 0;
+            }
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav li {
+                flex: 1 1 auto;
+                text-align: center;
+                margin: 0 5px;
+            }
+            nav a {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            nav a:hover, nav a.active {
+                transform: none;
+                border-bottom: 3px solid var(--secondary-color);
+                border-left: none;
+            }
+            main {
+                padding: 30px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+            .header-content h1 {
+                font-size: 2rem;
+            }
+			.header-content {
+				position: relative;
+				text-align: center;
+				z-index: 2;
+				padding-top: 100px; /* เพิ่มโค้ดนี้เพื่อเลื่อนข้อความลงมา */
+}
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        <header class="hero">
+            <div class="header-content">
+                <h1>พอร์ตโฟลิโอออนไลน์</h1>
+                <p>ยินดีต้อนรับสู่โลกใบเล็กๆ ที่เต็มไปด้วยความฝันของฉัน</p>
+            </div>
+        </header>
+        <div class="main-content">
+            <nav>
+                <ul>
+                    <li><a href="Home page.html" class="active">หน้าหลัก</a></li>
+					<li><a href="p1.html">ข้อมูลส่วนตัว</a></li>
+					<li><a href="p2.html">ประวัติการศึกษา</a></li>
+					<li><a href="p3.html">โครงงาน</a></li>
+					<li><a href="p4.html">ประสบการณ์การทำงาน</a></li>
+					<li><a href="p5.html">กิจกรรม</a></li>
+					<li><a href="p6.html">เกียรติบัตร</a></li>
+					<li><a href="p7.html">ติดต่อ</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h2>แรงบันดาลใจของฉัน</h2>
+                <blockquote class="quote-box">
+                    "ความสำเร็จไม่ได้มาจากการรอคอย แต่มาจากการลงมือทำ"
+                </blockquote>
+                <p>ฉันเชื่อเสมอว่าโอกาสไม่ได้เกิดขึ้นจากความบังเอิญ แต่เกิดขึ้นจากความตั้งใจและการไม่หยุดพัฒนาตนเอง ประโยคนี้เป็นสิ่งที่ผลักดันให้ฉันกล้าที่จะเริ่มลงมือทำสิ่งใหม่ ๆ แม้ในวันที่ยังไม่มั่นใจ และยังไม่รู้ว่าจะสำเร็จหรือไม่ แต่ฉันเลือกที่จะลอง เรียนรู้ แก้ไขข้อผิดพลาด และเดินหน้าต่อไป เพราะฉันเชื่อว่า <b>“ประสบการณ์มีค่ามากกว่าความกลัว”</b> และ <b>“การเริ่มต้นทำทันทีสำคัญกว่าการรอให้พร้อม”</b></p>
+                <p>ตลอดช่วงเวลาที่ผ่านมา ฉันได้เรียนรู้จากทั้งในห้องเรียนและนอกห้องเรียน ผ่านกิจกรรมหลากหลายด้าน ไม่ว่าจะเป็นงานจิตอาสา การแข่งขันด้านวิชาการ การทำกิจกรรมพัฒนาทักษะความเป็นผู้นำ หรือโครงงานเชิงสร้างสรรค์ สิ่งเหล่านี้ไม่ได้เป็นเพียงผลงานในพอร์ตเท่านั้น แต่เป็นกระบวนการเรียนรู้ที่หล่อหลอมให้ฉันเติบโตขึ้นทั้งความคิด ทักษะ และทัศนคติ</p>
+                <p>แฟ้มสะสมผลงานในรูปแบบเว็บไซต์แห่งนี้ จึงถูกสร้างขึ้นจากความตั้งใจของฉัน ที่อยากเก็บบันทึกเส้นทางการพัฒนาตัวเองไว้เป็น <b>“ความทรงจำที่จับต้องได้”</b> ทุกผลงานที่อยู่ในเว็บไซต์นี้ ไม่ได้สะท้อนเพียง “สิ่งที่ฉันทำ” แต่ยังสะท้อน <b>“ความตั้งใจ ความพยายาม และการไม่ยอมแพ้”</b> ของฉันด้วย</p>
+                <p>ฉันหวังว่าเมื่อทุกคนได้เข้ามาเยี่ยมชมเว็บไซต์นี้ ทุกคนจะได้รู้จักฉันมากกว่าชื่อและผลงาน แต่ได้รู้จัก <b>‘ตัวตน ความคิด และความมุ่งมั่น’</b> ของฉันด้วย ขอบคุณที่สละเวลาเข้ามาอ่านเรื่องราวของฉัน และยินดีต้อนรับเข้าสู่โลกใบเล็ก ๆ ที่เต็มไปด้วยความฝันและแรงบันดาลใจของฉันค่ะ</p>
+                <p>เมื่ออ่านเนื้อหาจบแล้ว สามารถไปยัง <a href="p7.html">หน้าติดต่อ</a> เพื่อแสดงความคิดเห็นและข้อเสนอแนะ</p>
+            </main>
+        </div>
+        <footer>
+            <h3>จัดทำโดย: นางสาวธนพร พันธ์เพียร</h3>
+        </footer>
+    </div>
+</body>
+</html>
