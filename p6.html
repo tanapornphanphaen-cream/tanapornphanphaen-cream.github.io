@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate - ธนพร พันธ์เพียร</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- General settings --- */
+        :root {
+            --primary-color: #004d99; /* Deep Blue */
+            --secondary-color: #007bff; /* Bright Blue */
+            --light-bg: #f5f8fa; /* Light Gray Background */
+            --card-bg: #ffffff; /* White Card Background */
+            --text-color: #333333; /* Dark Gray Text */
+            --light-text-color: #f0f0f0; /* Light Gray Text */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        /* --- Main container --- */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 40px);
+        }
+        /* --- Header Section --- */
+        header.hero {
+            position: relative;
+            height: 300px;
+            background-image: url('Header.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        /* --- Main Content Layout --- */
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+        /* --- Navigation Menu --- */
+        nav {
+            width: 300px;
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+        nav a:hover::before {
+            left: 0;
+        }
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left: 5px solid var(--secondary-color);
+        }
+        /* --- Main Article Section --- */
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: var(--card-bg);
+            border-radius: 0 16px 16px 0;
+        }
+        main h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+        
+        .section-heading {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        main p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        
+        /* --- Certificate List --- */
+        .certificate-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .certificate-item {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .certificate-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .certificate-item strong {
+            display: block;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .certificate-item p {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .certificate-item img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 4px solid var(--secondary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        /* --- Footer Section --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+        }
+        footer h3 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        /* --- Responsive Design (Mobile) --- */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav li {
+                flex: 1 1 auto;
+                text-align: center;
+                margin: 0 5px;
+            }
+            nav a {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+            nav a:hover, nav a.active {
+                transform: none;
+                border-bottom: 3px solid var(--secondary-color);
+                border-left: none;
+            }
+            main {
+                padding: 30px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            .certificate-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        
+        <header class="hero">
+            <div class="header-content">
+                <h1>เกียรติบัตรและรางวัล</h1>
+                <p>ความสำเร็จที่ผ่านมา</p>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <nav>
+                <ul>
+                    <li><a href="Home page.html">หน้าหลัก</a></li>
+                    <li><a href="p1.html">ข้อมูลส่วนตัว</a></li>
+                    <li><a href="p2.html">ประวัติการศึกษา</a></li>
+                    <li><a href="p3.html">โครงงาน</a></li>
+                    <li><a href="p4.html">ประสบการณ์การทำงาน</a></li>
+                    <li><a href="p5.html">กิจกรรม</a></li>
+                    <li><a href="p6.html" class="active">เกียรติบัตร</a></li>
+                    <li><a href="p7.html">ติดต่อ</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h2>เกียรติบัตรและรางวัล</h2>
+                <p>เกียรติบัตรและรางวัลเหล่านี้เป็นเครื่องยืนยันถึงความมุ่งมั่นและความพยายามของฉันที่ทุ่มเทให้กับกิจกรรมและการเรียนรู้ต่างๆ ตลอดช่วงเวลาที่ผ่านมาตั้งแต่ระดับประถมศึกษาจนถึงปัจจุบัน ซึ่งทำให้ฉันได้พัฒนาทักษะและความสามารถที่หลากหลาย</p>
+                
+                <h3 class="section-heading">ระดับมัธยมศึกษาตอนปลาย</h3>
+                <div class="certificate-list">
+                    <div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการวิทยาศาสตร์</strong>
+                        <p>ได้รับรางวัลชนะเลิศระดับโรงเรียน</p>
+						<p>กิจกรรมการแข่งขันตอบปัญหาวิทยาศาสตร์ ระดับชั้นมัธยมศึกษาปีที่ 4 (โปรแกรมวิทย์-คณิต)</p>
+                        <img src="1.jpg" alt="เกียรติบัตรวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการวิทยาศาสตร์</strong>
+                        <p>ได้รับรางวัลระดับเหรียญเงิน รองชนะเลิศอันดับที่ 1</p>
+						<p>กิจกรรมการแข่งขันหุ่นยนต์ระดับสูง ระดับชั้น ม.4-ม.6</p>
+						<p>งานศิลปหัตหรรมนักเรียน ครั้งที่ 71 ปีการศึกษา2566</p>
+                        <img src="2.jpg" alt="เกียรติบัตรวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการคณิตศาสตร์</strong>
+                        <p>ได้รับรางวัลระดับเหรียญทองแดง รองชนะเลิศอันดับที่ 1</p>
+						<p>กิจกรรมการแข่งขันสร้างสรรค์ผลงานคณิตศาสตร์โดยใช้โปรแกรม GSP ระดับชั้น ม.4-ม.6</p>
+						<p>งานศิลปหัตหรรมนักเรียน ครั้งที่ 71 ปีการศึกษา2566</p>
+                        <img src="3.jpg" alt="เกียรติบัตรคณิตศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการวิทยาศาสตร์</strong>
+                        <p>ผ่านเข้ารอบชิงชนะเลิศ</p>
+						<p>กิจกรรมการแข่งขันการประกวดพฤกษนวัตกรรม Pitching Idea Challenge 2024</p>
+						<p>งานเกษตรกำแพงแสน ประจำปี 2567</p>
+                        <img src="4.jpg" alt="เกียรติบัตรวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการวิทยาศาสตร์</strong>
+                        <p>ได้รับรางวัลเข้าร่วมการแข่งขัน</p>
+						<p>กิจกรรมการแข่งขันการพัฒนาหุ่นยนต์อัตโนมัติด้วยภาษาไพทอน</p>
+						<p>ประจำปี 2566 ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์</p>
+                        <img src="5.jpg" alt="เกียรติบัตรวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการวิทยาศาสตร์</strong>
+                        <p>ได้รับรางวัลเข้าร่วมการแข่งขัน</p>
+						<p>เข้าร่วมการอบรมและแข่งขัน Samsung Solve for Tomorrow 2024</p>
+						<p>เกี่ยวกับ Design Thinking และ Entrepreneurship เพื่อสร้างนวัตกรรมที่มีผลกระทบสูง พร้อมทั้งมีความเห็นอกเห็นใจและยั่งยืน</p>
+                        <img src="6.jpg" alt="เกียรติบัตรวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการวิทยาศาสตร์</strong>
+                        <p>ได้รับรางวัลเข้าร่วมการแข่งขัน</p>
+						<p>กิจกรรมการแข่งขันเขียนโปรแกรมคอมพิวเตอร์ (ระดับมัธยมศึกษา)</p>
+						<p>งานสัปดาห์วิทยาศาตร์ ปี 2567</p>
+						<p>ณ คณะวิทยาศาสตร์ มหาวิทยาลัยศิลปากร</p>
+                        <img src="7.jpg" alt="เกียรติบัตรวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการวิทยาศาสตร์</strong>
+                        <p>ได้รับรางวัลเข้าร่วมการแข่งขัน</p>
+						<p>เข้าร่วมการอบรมและแข่งขัน Samsung Solve for Tomorrow 2025</p>
+						<p>เกี่ยวกับ Design Thinking และ Entrepreneurship เพื่อสร้างนวัตกรรมที่มีผลกระทบสูง พร้อมทั้งมีความเห็นอกเห็นใจและยั่งยืน</p>
+                        <img src="8.png" alt="เกียรติบัตรวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการคณิตศาสตร์</strong>
+                        <p>ได้รับรางวัลเข้าร่วมการแข่งขัน</p>
+						<p>กิจกรรมการแข่งขันตอบปัญหาคณิตศาสตร์ ระดับมัธยมศึกษาตอนปลาย</p>
+						<p>ในงานสัปดาห์วิทยาศาสตร์แห่งชาติ ประจำปี 2568</p>
+                        <img src="9.jpg" alt="เกียรติบัตรคณิตศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาการคณิตศาสตร์</strong>
+                        <p>ได้รับรางวัลเข้าร่วมการแข่งขัน</p>
+						<p>กิจกรรมการแข่งขันตอบปัญหาคณิตศาสตร์ ระดับมัธยมศึกษาตอนปลาย</p>
+						<p>มหาวิทยาลัยสงขลานครินทร์</p>
+                        <img src="10.jpg" alt="เกียรติบัตรคณิตศาสตร์">
+                    </div>
+					
+                </div>
+                
+                <h3 class="section-heading">ระดับมัธยมศึกษาตอนต้น</h3>
+                <div class="certificate-list">
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรด้านวิชาการ</strong>
+                        <p>ได้รับการยกย่องว่าเป็น "นักเรียนที่มีผลการเรียนดี"</p>
+						<p>ระดับเกรดเแลี่ย 3.86 ประจำปีการศึกษา 2563</p>
+                        <img src="11.jpg" alt="เกียรติบัตรด้านวิชาการ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรกิจกรรมกีฬา</strong>
+                        <p>ได้รับรางวัลเหรียญเงิน ชนิดกีฬาเปตอง</p>
+						<p>การแข่งขันกีฬาชิงชนะเลิศแก่งจังหวัดราชบุรี ประจำปี 2563</p>
+                        <img src="12.jpg" alt="เกียรติบัตรกิจกรรมกีฬา">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรกิจกรรมกีฬา</strong>
+                        <p>ได้รับรางวัลเหรียญเงิน ชนิดกีฬาเปตอง รุ่นอายุ 14 ปี</p>
+						<p>การแข่งขันกีฬานักเรียนนักศึกษาจังหวัดราชบุรี ประจำปีงบประมาณ 2563</p>
+                        <img src="13.jpg" alt="เกียรติบัตรกิจกรรมกีฬา">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาวิทยาศาสตร์</strong>
+                        <p>ได้รับรางวัลเข้าร่วมการแข่งขันระดับโรงเรียน</p>
+						<p>กิจกรรมการแข่งขันตอบปัญหาวิทยาศาสตร์ ระดับชั้นมัธยมศึกษาปีที่ 3</p>
+                        <img src="14.jpg" alt="เกียรติบัตรวิชาวิทยาศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรกิจกรรมประกวดสุนทรพจน์</strong>
+                        <p>ได้รับรางวัลชมเชย ระดับชั้นมัธยมศึกษาตอนต้น</p>
+						<p>การประกวดสุนทรพจน์เนื่องในวันเยาวชนแห่งชาติ</p>
+                        <img src="15.jpg" alt="เกียรติบัตรกิจกรรมประกวดสุนทรพจน์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรกิจกรรมกีฬา</strong>
+                        <p>ได้รับรางวัลเหรียญทองแดง ชนะเลิศอันดับที่ 3</p>
+						<p>การแข่งขันกีฬานักเรียนภายในเขตเทศบาลเมืองบ้านโป่ง ประจำปี 2565</p>
+                        <img src="16.jpg" alt="เกียรติบัตรกิจกรรมกีฬา">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรกิจกรรม</strong>
+                        <p>เป็นนักเรียน "คนดีศรีรัตนฯ" ด้านกิจกรรม ประจำปีการศึกษา 2565</p>
+                        <img src="17.jpg" alt="เกียรติบัตรกิจกรรม">
+                    </div>
+					
+                </div>
+
+                <h3 class="section-heading">ระดับประถมศึกษา</h3>
+                <div class="certificate-list">
+                    <div class="certificate-item">
+                        <strong>เกียรติบัตรด้านวิชาการ</strong>
+                        <p>มีผลคะแนนการทดสอบการอ่านออกเขียนได้ ประจำปี 2559</p>
+						<p>คะแนนสูงสุดเป็นอันดับที่ 1 ของระดับชั้นประถมศึกษาปีที่ 3</p>
+						<p>โรงเรียนอนุบาลเทศบาลตำบลกรับใหญ่</p>
+                        <img src="18.jpg" alt="เกียรติบัตรด้านวิชาการ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรด้านวิชาการ</strong>
+                        <p>มีผลคะแนนการสอบวัดความสามารถพื้นฐานของผู้เรียนระดับชาติ (National Test : NT)</p>
+						<p>คะแนนสูงสุดเป็นอันดับที่ 1 ของระดับชั้นประถมศึกษาปีที่ 3</p>
+						<p>โรงเรียนอนุบาลเทศบาลตำบลกรับใหญ่</p>
+                        <img src="19.jpg" alt="เกียรติบัตรด้านวิชาการ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาภาษาไทย</strong>
+                        <p>ได้รับรางวัลรองชนะเลิศอันดับที่ 2</p>
+						<p>กิจกรรมการประกวด เขียนตามคำบอก โครงการวันภาษาไทยแห่งชาติ ประจำปี 2560</p>
+                        <img src="20.jpg" alt="เกียรติบัตรวิชาภาษาไทย">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาภาษาไทย</strong>
+                        <p>ได้รับรางวัลรองชนะเลิศอันดับที่ 2</p>
+						<p>กิจกรรมการแข่งขันการอ่านทำนองเสนาะจากเรื่อง พระอภัยมณี</p>
+						<p>โครงการวันสุนทรภู่ ประจำปี 2561</p>
+                        <img src="21.jpg" alt="เกียรติบัตรวิชาภาษาไทย">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาภาษาไทย</strong>
+                        <p>ได้รับรางวัลชนะเลิศ การแข่งขันการแต่งบทประพันธ์ (กลอนสุภาพ)</p>
+						<p>โครงการวันสุนทรภู่ ประจำปี 2561</p>
+                        <img src="22.jpg" alt="เกียรติบัตรวิชาภาษาไทย">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาภาษาไทย</strong>
+                        <p>ได้รับรางวัลชนะเลิศ การแข่งขันตอบปัญหาภาษาไทย ระดับชั้นประถมศึกษาปีที่ 5</p>
+						<p>โครงการวันภาษาไทยแห่งชาติ ประจำปีการศึกษา 2561</p>
+                        <img src="23.jpg" alt="เกียรติบัตรวิชาภาษาไทย">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรด้านวิชาการ</strong>
+                        <p>ได้รับรางวัลระดับเหรียญทอง รองชนะเลิศใอันดับที่ 2</p>
+						<p>กิจกรรม จัดสวนถาดแห้ง ระดับชั้น ไม่กำหนดช่วงชั้น</p>
+                        <img src="24.jpg" alt="เกียรติบัตรด้านวิชาการ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรด้านวิชาการ</strong>
+                        <p>ได้เข้าร่วมการประกวดการแข่งขันการจัดสวนถาดแห้ง</p>
+						<p>งานมหกรรมการจัดการศึกษาท้องถิ่น ประจำปี 2561</p>
+                        <img src="25.jpg" alt="เกียรติบัตรวาดภาพ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาคณิตศาสตร์</strong>
+                        <p>เป็นตัวแทนนักเรียนระดับจังหวัดเข้าสอบแข่งขันคนเก่งในดรงเรียนท้องถิ่น ระดับประเทศ</p>
+						<p>กลุ่มสาระการเรียนรู้คณิตศาสตร์ ชั้นประถมศึกษาปีที่ 5</p>
+                        <img src="26.jpg" alt="เกียรติบัตรวิชาการคณิตศาสตร์">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรกิจกรรมกีฬา</strong>
+                        <p>เป็นผู้ที่สร้าชื่อเสียงให้กับโรงเรียนระดับประเทศในการแข่งขันกีฬาเปตอง</p>
+                        <img src="27.png" alt="เกียรติบัตรกิจกรรมกีฬา">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรการแข่งขันวาดภาพ</strong>
+                        <p>ได้รับรางวัลชนะเลิศอันดับที่ 3 การแข่งขันวาดภาพระดับโรงเรียน</p>
+						<p>โครงการกิจกรรมพัฒนาาผู้เรียนสู่ความเป็นเลิศด้านศิลปะ : ศิลป์สร้างสรรค์</p>
+                        <img src="28.jpg" alt="เกียรติบัตรวาดภาพ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรด้านวิชาการ</strong>
+                        <p>ไได้รับรางวัลระดับเหรียญเงินกิจกรรมการประกวดการแข่งขันการจัดสวนถาดแห้ง</p>
+						<p>การแข่งขันทักษะทางวิชาการ ระดับภาคกลาง ประจำปีงบประมาณ 2562</p>
+                        <img src="29.jpg" alt="เกียรติบัตรด้านวิชาการ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรการแข่งขันวาดภาพ</strong>
+                        <p>ได้รับรางวัลชนะเลิศอันดับที่ 2 ในการแข่งขันวาดภาพระดับโรงเรียน</p>
+                        <img src="30.jpg" alt="เกียรติบัตรวาดภาพ">
+                    </div>
+					
+					<div class="certificate-item">
+                        <strong>เกียรติบัตรวิชาสังคม</strong>
+                        <p>ได้รับรางวัลเหรียญทอง</p>
+						<p>	dkic-j'-yo9v[xyPsk86ITii, ginjv' fu =yj; xd9b itfy[xit5,L7dKk9vox]kp</p>
+                        <img src="31.jpg" alt="เกียรติบัตรวิชาสังคม">
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <footer>
+            <h3>จัดทำโดย: นางสาวธนพร พันธ์เพียร</h3>
+        </footer>
+    </div>
+</body>
+</html>
