@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience - ธนพร พันธ์เพียร</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- General settings --- */
+        :root {
+            --primary-color: #004d99; /* Deep Blue */
+            --secondary-color: #007bff; /* Bright Blue */
+            --light-bg: #f5f8fa; /* Light Gray Background */
+            --card-bg: #ffffff; /* White Card Background */
+            --text-color: #333333; /* Dark Gray Text */
+            --light-text-color: #f0f0f0; /* Light Gray Text */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Main container --- */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 40px);
+        }
+
+        /* --- Header Section --- */
+        header.hero {
+            position: relative;
+            height: 300px;
+            background-image: url('Header.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* --- Main Content Layout --- */
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        /* --- Navigation Menu --- */
+        nav {
+            width: 300px;
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        /* --- Main Article Section --- */
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: var(--card-bg);
+            border-radius: 0 16px 16px 0;
+        }
+
+        main h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+        
+        main h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        main p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        
+        /* --- Job Item Styles --- */
+        .job-item {
+            background-color: var(--light-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .job-item h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .job-item p {
+            font-size: 1em;
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .job-item ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .job-item li {
+            position: relative;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .job-item li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* --- Activity Images Styles --- */
+        .activity-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .activity-img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .activity-img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* --- Footer Section --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        footer h3 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* --- Responsive Design (Mobile) --- */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav li {
+                flex: 1 1 auto;
+                text-align: center;
+                margin: 0 5px;
+            }
+
+            nav a {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            nav a:hover, nav a.active {
+                transform: none;
+                border-bottom: 3px solid var(--secondary-color);
+                border-left: none;
+            }
+
+            main {
+                padding: 30px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .activity-img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="portfolio-container">
+    
+    <header class="hero">
+        <div class="header-content">
+            <h1>ประสบการณ์การทำงาน</h1>
+            <p>การเรียนรู้จากโลกแห่งความเป็นจริง</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <nav>
+            <ul>
+                <li><a href="Home page.html">หน้าหลัก</a></li>
+                <li><a href="p1.html">ข้อมูลส่วนตัว</a></li>
+                <li><a href="p2.html">ประวัติการศึกษา</a></li>
+                <li><a href="p3.html">โครงงาน</a></li>
+                <li><a href="p4.html" class="active">ประสบการณ์การทำงาน</a></li>
+                <li><a href="p5.html">กิจกรรม</a></li>
+                <li><a href="p6.html">เกียรติบัตร</a></li>
+                <li><a href="p7.html">ติดต่อ</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>ประสบการณ์การทำงานที่ผ่านมา</h2>
+            <p>
+                แม้ว่าฉันจะยังเป็นนักเรียน แต่ฉันได้มีโอกาสเข้าร่วมกิจกรรมและการทำงานพิเศษที่ช่วยให้ฉันได้เรียนรู้ทักษะที่สำคัญและได้สัมผัสกับโลกการทำงานจริง
+            </p>
+
+            <div class="job-item">
+                <h4>สมาชิกสภาเด็กและเยาวชนจังหวัดราชบุรี</h4>
+                <p><strong>องค์กร:</strong> สภาเด็กและเยาวชนจังหวัดราชบุรี <br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2567 </p>
+                <div class="activity-images">
+                    <img src="60.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                    <img src="61.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                    <img src="62.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>ประสานงานกิจกรรมกับโรงเรียนของตนเองหรือบริเวณใกล้เคียง</li>
+                    <li>ช่วยจัดการและดูแลการลงทะเบียนของผู้เข้าร่วมงาน</li>
+                    <li>เรียนรู้การทำงานภายใต้ความกดดันและการแก้ไขปัญหาเฉพาะหน้า</li>
+                </ul>
+            </div>
+            
+            <div class="job-item">
+                <h4>กิจกรรมจิตอาสาเพื่อชุมชน</h4>
+                <p><strong>องค์กร:</strong> โครงการ "จิตอาสาพัฒนาชุมชน"<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2568</p>
+                <div class="activity-images">
+                    <img src="57.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                    <img src="58.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>มีส่วนร่วมในการวางแผนและจัดกิจกรรมเพื่อมอบความรู้แก่น้องๆต่างโรงเรียน</li>
+                    <li>เป็นหัวหน้าวิทยากรประจำฐานการเรียนรู้</li>
+                    <li>ได้ฝึกทักษะการสื่อสารและการทำงานเป็นทีมเพื่อเป้าหมายร่วมกัน</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมการรับมอบทุนการศึกษา</h4>
+                <p><strong>องค์กร:</strong> โครงการมอบทุนของศึกษา SCG<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2566</p>
+                <div class="activity-images">
+                    <img src="63.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>เป็นตัวแทนของนักเรียนทั้งหมดกล่าวสุนทรพจน์ขอบคุณทางคณะผู้บริหารของ SCG</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมจิตอาสาเพื่อชุมชน</h4>
+                <p><strong>องค์กร:</strong> โรงเรียนรัตนราษฎร์บำรุง<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2566</p>
+                <div class="activity-images">
+                    <img src="64.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>มีส่วนร่วมในการวางแผนและจัดกิจกรรมเพื่อมอบความรู้แก่น้องๆต่างโรงเรียน</li>
+                    <li>ผู้จัดทำสื่อการเรียนรู้เพื่อน้องๆ</li>
+                    <li>ได้ฝึกทักษะการสื่อสารและการทำงานเป็นทีมเพื่อเป้าหมายร่วมกัน</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมอบรม</h4>
+                <p><strong>องค์กร:</strong> โรงเรียนรัตนราษฎร์บำรุง<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2568</p>
+                <div class="activity-images">
+                    <img src="65.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>เป็นตัวแทนในการกล่าวขอบคุณคณะวิทยากร</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมจิตอาสาเพื่อชุมชน</h4>
+                <p><strong>องค์กร:</strong> โรงเรียนรัตนราษฎร์บำรุง<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2566</p>
+                <div class="activity-images">
+                    <img src="66.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>ผู้นำการจัดกิจกรรมนันทนาการให้น้องๆและเพื่อนๆ</li>
+                    <li>ได้ฝึกทักษะการสื่อสารและการทำงานเป็นทีมเพื่อเป้าหมายร่วมกัน</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมสร้างความสามัคคี</h4>
+                <p><strong>องค์กร:</strong> โรงเรียนรัตนราษฎร์บำรุง<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2567</p>
+                <div class="activity-images">
+                    <img src="67.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>มีส่วนร่วมในการวางแผนและมอบบทบาทหน้าที่ให้เพื่อนร่วมทีม</li>
+                    <li>เป็นผู้นำเชียร์ในการแข่งขันกีฬาภายใน</li>
+                    <li>ได้ฝึกทักษะการทำงานร่วมกับผู้อื่น</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมจิตอาสา</h4>
+                <p><strong>องค์กร:</strong> โรงเรียนรัตนราษฎร์บำรุง<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2567</p>
+                <div class="activity-images">
+                    <img src="68.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>ผู้นำการจัดกิจกรรมนันทนาการให้น้องๆและเพื่อนๆ</li>
+                    <li>ได้ฝึกทักษะการสื่อสารและการทำงานเป็นทีมเพื่อเป้าหมายร่วมกัน</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมจิตอาสาเพื่อชุมชน</h4>
+                <p><strong>องค์กร:</strong> โรงเรียนรัตนราษฎร์บำรุง<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2566</p>
+                <div class="activity-images">
+                    <img src="69.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>ผู้นำการจัดกิจกรรมนันทนาการให้น้องๆและเพื่อนๆ</li>
+                    <li>ได้ฝึกทักษะการสื่อสารและการทำงานเป็นทีมเพื่อเป้าหมายร่วมกัน</li>
+                </ul>
+            </div>
+			
+			<div class="job-item">
+                <h4>กิจกรรมวันไหว้ครู</h4>
+                <p><strong>องค์กร:</strong> โรงเรียนรัตนราษฎร์บำรุง<br>
+                <strong>ระยะเวลา:</strong> พ.ศ. 2568</p>
+                <div class="activity-images">
+                    <img src="70.jpg" alt="ภาพกิจกรรม" class="activity-img">
+                </div>
+                <ul>
+                    <li>เป็นแกนนำในการจัดทำพานไหว้ครู ประเภท สวยงาม</li>
+                    <li>เป็นจัดทำโครงร่างและมอบหมายหน้าที่ให้เพื่อนร่วมทีม</li>
+                    <li>เป็นตัวแทนในการพูดความในใจและแสดงความเคารพต่ออาจารย์ที่ปรึกษา</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <h3>จัดทำโดย: นางสาวธนพร พันธ์เพียร</h3>
+    </footer>
+</div>
+</body>
+</html>

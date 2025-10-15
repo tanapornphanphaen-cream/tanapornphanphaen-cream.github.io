@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity - ธนพร พันธ์เพียร</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- General settings --- */
+        :root {
+            --primary-color: #004d99; /* Deep Blue */
+            --secondary-color: #007bff; /* Bright Blue */
+            --light-bg: #f5f8fa; /* Light Gray Background */
+            --card-bg: #ffffff; /* White Card Background */
+            --text-color: #333333; /* Dark Gray Text */
+            --light-text-color: #f0f0f0; /* Light Gray Text */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Main container --- */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 40px);
+        }
+
+        /* --- Header Section --- */
+        header.hero {
+            position: relative;
+            height: 300px;
+            background-image: url('Header.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .header-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* --- Main Content Layout --- */
+        .main-content {
+            display: flex;
+            flex: 1;
+        }
+
+        /* --- Navigation Menu --- */
+        nav {
+            width: 300px;
+            background-color: var(--primary-color);
+            padding: 30px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            display: block;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        /* --- Main Article Section --- */
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: var(--card-bg);
+            border-radius: 0 16px 16px 0;
+        }
+
+        main h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+        
+        main h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        main p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* --- Activity Gallery --- */
+        .activity-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .activity-item {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .activity-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Standard image in activity-item */
+        .activity-item > img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        /* Image within the content div (for primary school items) */
+        .activity-item .content img {
+            width: 100%; /* Make image fill its container width */
+            height: 180px; /* Fixed height for consistency */
+            object-fit: contain; /* Ensure the whole image is visible without cropping */
+            border-bottom: none; /* Remove border if not desired for smaller images */
+            margin-top: 15px;
+            padding: 10px; /* Add some padding if object-fit: contain leaves too much space */
+            background-color: #fff; /* White background for contained images */
+        }
+
+
+        .activity-item .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .activity-item h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .activity-item p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* --- Footer Section --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        footer h3 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* --- Responsive Design (Mobile) --- */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav li {
+                flex: 1 1 auto;
+                text-align: center;
+                margin: 0 5px;
+            }
+
+            nav a {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            nav a:hover, nav a.active {
+                transform: none;
+                border-bottom: 3px solid var(--secondary-color);
+                border-left: none;
+            }
+
+            main {
+                padding: 30px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .activity-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="portfolio-container">
+    
+    <header class="hero">
+        <div class="header-content">
+            <h1>กิจกรรมที่ฉันทำ</h1>
+            <p>เรื่องราวที่นอกเหนือจากการเรียนในห้อง</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <nav>
+            <ul>
+                <li><a href="Home page.html">หน้าหลัก</a></li>
+                <li><a href="p1.html">ข้อมูลส่วนตัว</a></li>
+                <li><a href="p2.html">ประวัติการศึกษา</a></li>
+                <li><a href="p3.html">โครงงาน</a></li>
+                <li><a href="p4.html">ประสบการณ์การทำงาน</a></li>
+                <li><a href="p5.html" class="active">กิจกรรม</a></li>
+                <li><a href="p6.html">เกียรติบัตร</a></li>
+                <li><a href="p7.html">ติดต่อ</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>กิจกรรมที่เข้าร่วม</h2>
+            <p>นอกจากเรื่องเรียนแล้ว ฉันยังให้ความสำคัญกับการทำกิจกรรมที่หลากหลาย ทั้งเพื่อผ่อนคลาย พัฒนาตนเอง และเปิดรับประสบการณ์ใหม่ๆ กิจกรรมเหล่านี้ไม่ได้เป็นเพียงงานอดิเรก แต่เป็นส่วนสำคัญที่ช่วยให้ฉันได้เรียนรู้ทักษะที่จำเป็น เช่น การทำงานร่วมกับผู้อื่น ความคิดสร้างสรรค์ และการแก้ปัญหา</p>
+
+            <h3>ระดับมัธยมศึกษาตอนปลาย</h3>
+            <p>ในช่วงนี้ ฉันเริ่มมองหากิจกรรมที่เกี่ยวข้องกับสิ่งที่สนใจในอนาคตทั้งด้านวิชาการ และด้านกิจกรรมการละเล่นร้องเพลงพื้นบ้านที่ดิฉันสนใจ</p>
+            <div class="activity-gallery">
+                <div class="activity-item">
+                    <div class="content">
+                        <h4>ผ่านการอบรม "โครงการค่ายนวัตกรรมและปัญญาประดิษฐ์"</h4>
+                        <p>โดยได้รับความรู้ในเรื่องของการเขียนโปรแกรม และการบังคับหุ่นยนต์</p>
+                        <img src="39.jpg" alt="เกียรติบัตรกิจกรรมการอบรม">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผ่านการอบรมโครงการส่งเสริมศักยภาพผู้เรียนด้านทักษะวิชาการ กิจกรรมพัฒนาผู้เรียนด้านหุ่นยนต์</h4>
+                        <p>ทำให้เข้าใจในเรื่องของการประกอบหุ่นยนต์ การเขียนโปรแกรม และการประยุกต์ใช้ในสถานการณ์ต่างๆ</p>
+                        <img src="40.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>รางวัลชนะเลิศ กิจกรรมการแข่งขัน การประกวดเดินแบบชุดประจำชาติอาเซียน</h4>
+                        <p>เป็นผู้ร่วมออกแบบและจัดทำชุดในการแข่งขัน</p>
+                        <img src="41.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>เข้าร่วมกิจกรรมจิตอาสา กิขกรรมอนุรักษ์ธรรมชาติและสัตว์ป่า "ค่ายรัตนฯ อาสา กล้าความดี จากพี่สู่น้อง"</h4>
+                        <p>ได้รับหน้าที่เป็นผู้นำการนันทนาการและดูแลน้องๆที่ร่วมกิจกรรม</p>
+                        <img src="42.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>เข้าร่วมโครงการศึกษาแหล่งเรียนรู้สู่โลกกว้าง กิจกรรมการทำปฏิบัติการทางชีววิทยา ณ มหาวิทยาลัย</h4>
+                        <p>ได้ทำความเข้าใจเกี่ยวกับโลกของแมลงมากยิ่งขึ้น เรียนรู้ถึงการสตาฟสิ่งมีชีวิต และการใช้ชีวิตของแมลง</p>
+                        <img src="43.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>รับหน้าที่ประธานพาเหรด การแข่งขันกีฬาภายใน Dokkaew Game 2566</h4>
+                        <p>ฝึกทักษะการวางแผนงาน และการออกแบบขบวนให้ออกมาตรงตามหัวข้อที่กำหนด</p>
+                        <img src="44.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>รางวัลรองชนะเลิศันดับที่ 1 บาสเกตบอลหญิง ระดับชั้นมัธยมศึกษาตอนปลาย</h4>
+                        <p>การฝึกความสามัคคี และทักษะการวิเคราะห์เกม</p>
+                        <img src="45.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผ้ปฏิบัติหน้าที่ประธานชุมนุมได้รับการประเมิน เกณฑ์คุณภาพชุมนุมระดับ ดีเยี่ยม</h4>
+                        <p>ได้ฝึกการเป็นผู้นำและผู้บริหารจัดการระบบภายในชุมนุม เพื่อให้ทุกคนปฏิบัติตามกฎระเบียบ</p>
+                        <img src="46.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผ่านการอบรมเชิงปฏิบัติการ "ท่วงทำนอง ตีกลองรำมะนา"</h4>
+                        <p>การฝึกทักษะเกี่ยวกับท่วงทำนองที่หลากหลายในการบรรเลงเพลงพื้นบ้าน</p>
+                        <img src="47.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผ่านการอบรมเชิงปฏิบัติการ ค่าย"เพราะกล้าพันธุ์ก่งเพลงพื้นบ้าน" รุ่นที่ 8</h4>
+                        <p>ได้รับรู้ถึงความหลายหลากของเพลงพื้นบ้าน และการพบเจอเพื่อนใหม่ๆ</p>
+                        <img src="48.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ได้รับรางวัลในการประกวดเพลงพื้นบ้านชิงรางวัลถ้วยพระราชทาน</h4>
+                        <p>ซึ่งได้รับตำแหน่ง กล้าฉับไว ในโครงการ</p>
+                        <img src="49.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ได้รับรางวัล ขวัญใจนักเพลงพื้นบ้าน โครงการปรพกวดเพลงพื้นบ้านภาคกลาง ชิงถ้วยพระราชทาน</h4>
+                        <p>ฝึกทักษะการกล้าแสดงออก และความมั่นใจในตนเอง</p>
+                        <img src="50.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผ่านการเข้าร่วมกิจกรรม "การถอดรหัสข้อมูล Atbash และ Caesar"</h4>
+                        <p>เป็นการเรียนผ่านแพลตฟอร์มออนไลน์ เรียนวิธีคิด ผ่านวิธีโค้ด</p>
+                        <img src="51.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผู้นำเชียร์สีชมพู การแข่งขันกีฬาภายใน Dokkaew Game 2567</h4>
+                        <p>ฝึกทักษะการเป็นผู้นำที่ดี เพื่อให้ทุกคนปฏิบัติตามกิจกรรมจนสิ้นสุดการทำกิจกรรมด้วยดี</p>
+                        <img src="52.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>รางวัลชนะเลิศ ชักเย่อ หญิง ระดับ ม.ปลาย การแข่งขันกีฬาภายใน Dokkaew Game 2567</h4>
+                        <p>การฝึกความสามัคคีภายในทีม และความอดทน</p>
+                        <img src="53.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>รางวัลชนะเลิศ วอลเลย์บอล หญิง ระดับ ม.ปลาย การแข่งขันกีฬาภายใน Dokkaew Game 2567</h4>
+                        <p>ฝึกความสามัคคี การวางแผน และการเล่นอย่างเป็นระบบของทีม</p>
+                        <img src="54.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>เข้าร่วมโครงการ กล้าเสนอ กล้าทำดี เด็กราชบุรีร่วมพัฒนาชาติ</h4>
+                        <p>ร่วมทำจิตอาสาพัฒนาโรงเรียน ณ โรงเรียนบ้านหนองไก่ขัน จังหวัดราชบุรี</p>
+                        <img src="55.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>เข้าร่วมกิจกรรมจิตอาสา ทำด้วยรักษ์ พิทักษ์ความดี สร้างดลกอนาคต</h4>
+                        <p>ณ อุทยานะรรมชาติวิทยาตามพระราชดำริ สมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ สยามบรมราชกุมารี อ.สวนผึ้ง จ.ราชบุรี</p>
+                        <img src="56.jpg" alt="เกียรติบัตรกิจกรรมการ">
+                    </div>
+                </div>
+            </div>
+            
+            <h3>ระดับมัธยมศึกษาตอนต้น</h3>
+            <p>เมื่อโตขึ้น ฉันเริ่มสนใจกิจกรรมที่ได้พัฒนาทักษะที่หลากหลายเพื่อค้นหาตนเองมากขึ้น</p>
+            <div class="activity-gallery">
+                <div class="activity-item">
+                    <div class="content">
+                        <h4>เข้ารับการอบรมโครงการเสริมทักษะชีวิตสำหรับเยาวชนในสถานศึกษา ปี 2563</h4>
+                        <p>โดยทำให้ได้เข้าใจถึงการใช้ชีวิตในสถานศึกษาและการเคารพกฎระเบียบมากยิ่งขึ้น</p>
+                        <img src="35.jpg" alt="เกียรติบัตรกิจกรรมการอบรม">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผ่านการฝึกอบรมหลักสูตรลูกเสือจิตอาสาพระราชทาน</h4>
+                        <p>โดยได้ฝึกทักษะการเอาตัวรอด และการช่วยชีวิตผู้อื่น</p>
+                        <img src="36.jpg" alt="เกียรติบัตรกิจกรรมจิตอาสา">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ได้เข้าร่วมกิจกรรม การแสดงละครอาเซียน</h4>
+                        <p>เนื่องในกิจกรรม "วันอาเซียน (ASEAN DAY) ประจำปีการศึกษา 2565"</p>
+                        <img src="37.jpg" alt="เกียรติบัตรกิจกรรมการแสดง">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>ผ่านการอบรมเชิงปฎิบัติการลำตัดและเพลงพื้นบ้านภาคกลาง</h4>
+                        <p>เพื่อสร้างเสริมสุขภาวะที่ดี และลดปัจจัยเสี่ยง</p>
+                        <img src="38.jpg" alt="เกียรติบัตรกิจกรรมด้านดนตรี">
+                    </div>
+                </div>
+            </div>
+                        
+            <h3>ระดับประถมศึกษา</h3>
+            <p>ในช่วงวัยเด็ก ฉันได้เข้าร่วมกิจกรรมที่ปลูกฝังจิตสำนึกให้เยาวชนตั้งแต่เด็ก</p>
+            <div class="activity-gallery">
+                <div class="activity-item">
+                    <div class="content">
+                        <h4>โครงการการศึกษาเพื่อต่อต้านการใช้ยาเสพติดในเด็กนักเรียน (D.A.R.E.ประเทศไทย)</h4>
+                        <p>โดยได้ให้คำปฏิญาณตนว่า จะหลีกเลี่ยงแรงกดดันและแรงจูงใจต่างๆ ที่จะนำไปสู่การใช้ยาเสพติด</p>
+                        <img src="32.jpg" alt="เกียรติบัตรกิจกรรม D.A.R.E.">
+                    </div>
+                </div>
+				
+                <div class="activity-item">
+                    <div class="content">
+                        <h4>การอบรมโครงการสนามจราจรเยาวชนเสริมสร้างจิตสำนึกความปลอดภัย</h4>
+                        <p>เป็นการอบรมเพื่อให้รู้ถึงความปลอดภัยบนท้องถนน ไม่ว่าจะเป็นการเดินข้ามถนน หรือการปฏิบัติตามกฎจราจร</p>
+                        <img src="33.jpg" alt="เกียรติบัตรกิจกรรมสนามจราจร">
+                    </div>
+                </div>
+				
+				<div class="activity-item">
+                    <div class="content">
+                        <h4>เข้าร่วมกิจกรรม การบรรเลงดนตรีสากล เพลง คำมั่นสัญญา</h4>
+                        <p>โครงการวันสุนทรภู่ ประจำปี 2560</p>
+                        <img src="34.jpg" alt="เกียรติบัตรกิจกรรมเล่นดนตรี">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <h3>จัดทำโดย: นางสาวธนพร พันธ์เพียร</h3>
+    </footer>
+</div>
+</body>
+</html>
